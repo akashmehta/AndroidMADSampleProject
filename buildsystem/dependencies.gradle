@@ -1,0 +1,106 @@
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+ext {
+    kotlin_version              = '1.3.72'
+    coreKtx                     = '1.3.2'
+    supportLib                  = '1.1.0'
+    constraintLayout            = '2.0.4'
+    junit                       = '4.12'
+    extJunit                    = '1.1.2'
+    espressoCore                = '3.3.0'
+    rxBinding                   = '4.0.0'
+    kotlinCoroutine             = '1.4.2'
+    jetPackCompose              = '1.0.0-alpha10'
+    material                    = '1.2.1'
+    rxJava2                     = '2.2.0'
+    rxAndroid                   = '2.0.2'
+    rxKotlin                    = '2.3.0'
+    recyclerView                = '1.1.0'
+    cardView                    = '1.0.0'
+    retrofit                    = '2.9.0'
+    lifecycleVersion            = '2.2.0'
+    chuck                       = '1.1.0'
+    glide                       = '4.11.0'
+    annotation                  = '1.1.0'
+    httpLogging                 = '4.9.0'
+    daggerHilt                  = '2.28-alpha'
+    dagger                      = '2.31.2'
+    kotlinxEndPoint             = 'org.jetbrains.kotlinx:kotlinx-coroutines'
+    rxBindingEndPoint           = 'com.jakewharton.rxbinding4'
+    daggerEndPoint              = 'com.google.dagger'
+    daggerVersion               = '2.32.2'
+    kotlinCoroutinIo            = '1.4.2'
+    kotlinCoroutinRx2           = '1.4.2'
+    kotlinCoroutinRx3           = '1.4.2'
+    kotlinCoroutinTest          = '1.4.2'
+    kotlinCoroutinCore          = '1.4.2'
+    kotlinCoroutinIoJvm         = '0.1.16'
+    kotlinCoroutinCoreJvm       = '1.4.2'
+    kotlinCoroutinReactor       = '1.4.2'
+    kotlinCoroutinAndroid       = '1.4.2'
+    kotlinCoroutinReactive      = '1.4.2'
+    kotlinCoroutinMetadata      = '1.4.2'
+    kotlinCoroutinIoNative      = '0.1.16'
+    KotlinCoroutinCoreNative    = '1.3.8'
+    kotlinCoroutinCoreCommon    = '1.3.8'
+
+    commonDependencies = [
+            kotlinStdLib                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            coreKtx                     : "androidx.core:core-ktx:$coreKtx",
+            appCompat                   : "androidx.appcompat:appcompat:$supportLib",
+            fragmentKtx                 : "androidx.fragment:fragment-ktx:1.2.4",
+
+            constraintLayout            : "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            junit                       : "junit:junit:$junit",
+            extJunit                    : "androidx.test.ext:junit:$extJunit",
+            espressoCore                : "androidx.test.espresso:espresso-core:$espressoCore",
+            rxBindingCore               : "$rxBindingEndPoint:rxbinding-core:$rxBinding",
+            rxBindingAppCompat          : "$rxBindingEndPoint:rxbinding-appcompat:$rxBinding",
+            rxBindingRecyclerView       : "$rxBindingEndPoint:rxbinding-recyclerview:$rxBinding",
+            rxBindingMaterial           : "$rxBindingEndPoint:rxbinding-material:$rxBinding",
+            rxJava2                     : "io.reactivex.rxjava2:rxjava:${rxJava2}",
+            rxAndroid                   : "io.reactivex.rxjava2:rxandroid:${rxAndroid}",
+            rxKotlin                    : "io.reactivex.rxjava2:rxkotlin:${rxKotlin}",
+            kotlinCoroutineCore         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutine",
+            kotlinCoroutineAndroid      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutine",
+            jetpackComposeUi            : "androidx.compose.ui:ui:$jetPackCompose",
+            jetPackComposeMaterial      : "androidx.compose.material:material:$jetPackCompose",
+            jetPackComposeUiTooling     : "androidx.compose.ui:ui-tooling:$jetPackCompose",
+            material                    : "com.google.android.material:material:$material",
+            recyclerView                : "androidx.recyclerview:recyclerview:$recyclerView",
+            cardView                    : "androidx.cardview:cardview:$cardView",
+            retrofitAdapterRxJava2      : "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
+            retrofitGson                : "com.squareup.retrofit2:converter-gson:$retrofit",
+            lifecycleViewModel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            lifecycleLiveData           : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+            lifecycleCompiler           : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+            chuckLibrary                : "com.readystatesoftware.chuck:library:$chuck",
+            chuckLibraryNoOp            : "com.readystatesoftware.chuck:library-no-op:$chuck",
+            glide                       : "com.github.bumptech.glide:glide:$glide",
+            glideCompiler               : "com.github.bumptech.glide:compiler:$glide",
+            annotation                  : "androidx.annotation:annotation:$annotation",
+            loggingInterceptor          : "com.squareup.okhttp3:logging-interceptor:$httpLogging",
+            daggerHilt                  : "$daggerEndPoint:hilt-android:$daggerHilt",
+            daggerHiltCompiler          : "$daggerEndPoint:hilt-android-compiler:$daggerHilt",
+            dagger                      : "$daggerEndPoint:dagger:$dagger",
+            daggerCompiler              : "$daggerEndPoint:dagger-compiler:$dagger",
+            kotlinCoroutinCore          : "$kotlinxEndPoint-core:$kotlinCoroutinCore",
+            kotlinCoroutinAndroid       : "$kotlinxEndPoint-android:$kotlinCoroutinAndroid",
+            kotlinCoroutinCoreCommon    : "$kotlinxEndPoint-core-common:$kotlinCoroutinCoreCommon",
+            kotlinCoroutinCoreJvm       : "$kotlinxEndPoint-core-jvm:$kotlinCoroutinCoreJvm",
+            KotlinCoroutinCoreNative    : "$kotlinxEndPoint-core-native:$KotlinCoroutinCoreNative",
+            KotlinCoroutinTest          : "$kotlinxEndPoint-test:$kotlinCoroutinTest",
+            kotlinCoroutinIoNative      : "$kotlinxEndPoint-io-native:$kotlinCoroutinIoNative",
+            kotlinCoroutinCoreMetaData  : "$kotlinxEndPoint-core-metadata:$kotlinCoroutinMetadata",
+            kotlinCoroutinIoJvm         : "$kotlinxEndPoint-io-jvm:$kotlinCoroutinIoJvm",
+            kotlinCoroutinReactor       : "$kotlinxEndPoint-reactor:$kotlinCoroutinReactor",
+            kotlinCoroutinReactive      : "$kotlinxEndPoint-reactive:$kotlinCoroutinReactive",
+            kotlinCoroutinRx2           : "$kotlinxEndPoint-rx2:$kotlinCoroutinRx2",
+            kotlinCoroutinRx3           : "$kotlinxEndPoint-rx3:$kotlinCoroutinRx3"
+    ]
+}

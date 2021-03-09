@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+//apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    def androidVersions = rootProject.ext.android
+    compileSdkVersion androidVersions.compileSdkVersion
+    buildToolsVersion androidVersions.buildToolVersion
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId "com.example.androidmadsampleproject"
+        minSdkVersion androidVersions.minSdkVersion
+        targetSdkVersion androidVersions.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // change only for public release
+        def versionMajor = 1 // For major release (where force update can be needed even)
+        def versionMinor = 0 // For minor release (like adding extra feature)
+        def versionPatch = 0 // For Bug fixing and patch
+
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "$versionMajor.$versionMinor.$versionPatch"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "api"
+    productFlavors {
+        def endPoints = rootProject.ext.endPoints
+        development {
+            dimension "api"
+            buildConfigField "String", "API", endPoints.devUrl
+        }
+        staging {
+            dimension "api"
+            buildConfigField "String", "API", endPoints.stageUrl
+        }
+        production {
+            dimension "api"
+            buildConfigField "String", "API", endPoints.prodUrl
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation commonDependencies.kotlinStdLib
+    implementation commonDependencies.coreKtx
+    implementation commonDependencies.fragmentKtx
+    implementation commonDependencies.appCompat
+    implementation commonDependencies.constraintLayout
+    testImplementation commonDependencies.junit
+    androidTestImplementation commonDependencies.extJunit
+    androidTestImplementation commonDependencies.espressoCore
+    implementation commonDependencies.rxBindingCore
+    implementation commonDependencies.rxBindingAppCompat
+    implementation commonDependencies.rxBindingRecyclerView
+    implementation commonDependencies.rxBindingMaterial
+    implementation commonDependencies.kotlinCoroutineCore
+    implementation commonDependencies.kotlinCoroutineAndroid
+    implementation commonDependencies.rxAndroid
+//    implementation commonDependencies.jetpackComposeUi
+//    implementation commonDependencies.jetPackComposeMaterial
+//    implementation commonDependencies.jetPackComposeUiTooling
+    implementation commonDependencies.material
+    implementation commonDependencies.recyclerView
+    implementation commonDependencies.cardView
+    implementation commonDependencies.retrofitAdapterRxJava2
+    implementation commonDependencies.retrofitGson
+    implementation commonDependencies.lifecycleViewModel
+    implementation commonDependencies.lifecycleLiveData
+    kapt commonDependencies.lifecycleCompiler
+    debugImplementation commonDependencies.chuckLibrary
+    releaseImplementation commonDependencies.chuckLibraryNoOp
+    implementation commonDependencies.glide
+    kapt commonDependencies.glideCompiler
+    implementation commonDependencies.annotation
+    implementation commonDependencies.loggingInterceptor
+    implementation commonDependencies.dagger
+    kapt commonDependencies.daggerCompiler
+//    implementation commonDependencies.daggerHilt
+//    kapt commonDependencies.daggerHiltCompiler
+    implementation commonDependencies.kotlinCoroutinCore
+    implementation commonDependencies.kotlinCoroutinAndroid
+//    implementation commonDependencies.kotlinCoroutinCoreCommon
+//    implementation commonDependencies.kotlinCoroutinCoreJvm
+//    implementation commonDependencies.KotlinCoroutinCoreNative
+//    implementation commonDependencies.KotlinCoroutinTest
+//    implementation commonDependencies.kotlinCoroutinIoNative
+//    implementation commonDependencies.kotlinCoroutinIoJvm
+//    implementation commonDependencies.kotlinCoroutinRx2
+//    implementation commonDependencies.kotlinCoroutinRx3
+//    implementation commonDependencies.kotlinCoroutinReactive
+//    implementation commonDependencies.kotlinCoroutinReactor
+}
