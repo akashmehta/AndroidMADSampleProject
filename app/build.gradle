@@ -99,7 +99,9 @@ dependencies {
     implementation commonDependencies.dagger
     kapt commonDependencies.daggerCompiler
     implementation commonDependencies.daggerHilt
+    implementation commonDependencies.hiltLifecycleViewModel
     kapt commonDependencies.daggerHiltCompiler
+    kapt commonDependencies.daggerAndroidHiltCompiler
     implementation commonDependencies.kotlinCoroutinCore
     implementation commonDependencies.kotlinCoroutinAndroid
 //    implementation commonDependencies.kotlinCoroutinCoreCommon
