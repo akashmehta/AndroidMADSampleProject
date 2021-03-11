@@ -3,9 +3,12 @@ package com.aakash.androidmadsampleproject.commonconfig.injection.module
 import com.aakash.androidmadsampleproject.AppApplication
 import com.aakash.androidmadsampleproject.BuildConfig
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.endpoint.ApiEndPoint
+import com.aakash.androidmadsampleproject.usermodule.ui.UserItemsActivity
 import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
+@InstallIn(value = [SingletonComponent::class])
 class RetrofitModule {
 
     @Provides

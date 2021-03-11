@@ -28,7 +28,7 @@ ext {
     glide                       = '4.11.0'
     annotation                  = '1.1.0'
     httpLogging                 = '4.9.0'
-    daggerHilt                  = '2.28-alpha'
+    daggerHilt                  = '2.28.3-alpha'
     dagger                      = '2.31.2'
     kotlinxEndPoint             = 'org.jetbrains.kotlinx:kotlinx-coroutines'
     rxBindingEndPoint           = 'com.jakewharton.rxbinding4'

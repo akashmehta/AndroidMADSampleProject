@@ -4,16 +4,10 @@ import android.content.Context
 import android.net.ConnectivityManager
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
-import com.aakash.androidmadsampleproject.commonconfig.injection.component.AppComponent
-import com.aakash.androidmadsampleproject.commonconfig.injection.component.DaggerAppComponent
-import com.aakash.androidmadsampleproject.commonconfig.injection.module.RetrofitModule
+import dagger.hilt.android.HiltAndroidApp
 
-//import dagger.hilt.android.HiltAndroidApp
-
-//@HiltAndroidApp
+@HiltAndroidApp
 class AppApplication : MultiDexApplication() {
-
-    lateinit var appComponent : AppComponent
 
     companion object {
         private lateinit var instance : AppApplication
@@ -27,17 +21,10 @@ class AppApplication : MultiDexApplication() {
         super.onCreate()
         instance = this
         initiateMultiDex()
-        initiateDagger()
     }
 
     private fun initiateMultiDex() {
         MultiDex.install(this)
-    }
-
-    private fun initiateDagger() {
-        appComponent = DaggerAppComponent.builder()
-            .retrofitModule(RetrofitModule())
-            .build()
     }
 
 

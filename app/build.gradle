@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-//apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     def androidVersions = rootProject.ext.android
@@ -98,8 +98,8 @@ dependencies {
     implementation commonDependencies.loggingInterceptor
     implementation commonDependencies.dagger
     kapt commonDependencies.daggerCompiler
-//    implementation commonDependencies.daggerHilt
-//    kapt commonDependencies.daggerHiltCompiler
+    implementation commonDependencies.daggerHilt
+    kapt commonDependencies.daggerHiltCompiler
     implementation commonDependencies.kotlinCoroutinCore
     implementation commonDependencies.kotlinCoroutinAndroid
 //    implementation commonDependencies.kotlinCoroutinCoreCommon
