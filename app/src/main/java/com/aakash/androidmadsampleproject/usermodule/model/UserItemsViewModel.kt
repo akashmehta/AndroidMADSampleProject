@@ -8,12 +8,19 @@ import com.aakash.androidmadsampleproject.AppApplication
 import com.aakash.androidmadsampleproject.commonconfig.model.CommonApiUiModel
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.endpoint.ApiEndPoint
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.Constants
+import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.singleArgViewModel
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.standardObservable
 import com.aakash.androidmadsampleproject.usermodule.dto.UserItemResponse
 import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
 
 class UserItemsViewModel(var apiService: ApiEndPoint) : ViewModel(), LifecycleObserver {
+
+    companion object {
+        val FACTORY =
+            singleArgViewModel(
+                ::UserItemsViewModel
+            )
+    }
 
     private val compositeDisposable = CompositeDisposable()
     private val liveData = MutableLiveData<CommonApiUiModel<ArrayList<UserItemResponse>>>()
