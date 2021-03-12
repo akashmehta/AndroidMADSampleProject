@@ -1,7 +1,6 @@
 package com.aakash.androidmadsampleproject.usermodule.model
 
 import android.util.Pair
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,7 +11,6 @@ import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.Consta
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.standardObservable
 import com.aakash.androidmadsampleproject.usermodule.dto.UserItemResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
