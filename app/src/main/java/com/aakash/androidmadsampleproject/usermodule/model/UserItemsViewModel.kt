@@ -1,5 +1,6 @@
 package com.aakash.androidmadsampleproject.usermodule.model
 
+import android.os.Build
 import android.util.Pair
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
@@ -9,9 +10,12 @@ import com.aakash.androidmadsampleproject.commonconfig.model.CommonApiUiModel
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.endpoint.ApiEndPoint
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.Constants
 import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.singleArgViewModel
-import com.aakash.androidmadsampleproject.commonconfig.shareddata.utility.standardObservable
 import com.aakash.androidmadsampleproject.usermodule.dto.UserItemResponse
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import java.util.*
+import kotlin.collections.ArrayList
 
 class UserItemsViewModel(var apiService: ApiEndPoint) : ViewModel(), LifecycleObserver {
 
@@ -32,9 +36,23 @@ class UserItemsViewModel(var apiService: ApiEndPoint) : ViewModel(), LifecycleOb
             liveData.value = CommonApiUiModel(progress = true)
 
             val disposable = apiService.fetchUsers()
-                .standardObservable()
-                .subscribe({ itemList ->
-                    liveData.value = CommonApiUiModel(response = itemList)
+                .observeOn(AndroidSchedulers.mainThread())
+                .switchMap { itemList ->
+                    apiService.fetchUser(itemList[0].login ?: "")
+                        .materialize()
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ item ->
+                    item.value?.let {
+                        val value = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                            Objects.toString(it)
+                        } else {
+                            println("")
+                        }
+                        println(value)
+                    }
+//                    liveData.value = CommonApiUiModel(response = itemList)
                 }, {
                     liveData.value = CommonApiUiModel(error = Pair(-1,""))
                 })
