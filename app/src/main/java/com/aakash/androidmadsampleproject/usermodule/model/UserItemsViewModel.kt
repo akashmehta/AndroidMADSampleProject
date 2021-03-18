@@ -48,7 +48,7 @@ class UserItemsViewModel(var apiService: ApiEndPoint) : ViewModel(), LifecycleOb
                         val value = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                             Objects.toString(it)
                         } else {
-                            println("")
+
                         }
                         println(value)
                     }
